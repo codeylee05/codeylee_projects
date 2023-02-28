@@ -4,7 +4,6 @@ MAX_SUMOFDIMENSIONS = 200
 MAX_VOLUME = 512000
 MIN_PRICE = 10 
 
-
 def check_volume_length():
     while True:
         length = input("What is the length of the parcel(in cm)? ")
@@ -25,7 +24,7 @@ def check_volume_breadth():
         breadth = input("What is the breadth of the parcel (in cm)? ")
         if breadth.isdigit():
             breadth = int(breadth)
-            if 0< breadth <= MAX_DIMENSION:
+            if 0 < breadth <= MAX_DIMENSION:
                 break
             else:
                 print(f"The parcel has been rejected for the breadth of the parcel should be a non-zero value smaller than or equal to {MAX_DIMENSION}")
@@ -40,7 +39,7 @@ def check_volume_height():
         height = input("What is the height of the parcel(in cm)? ")
         if height.isdigit(): 
             height = int(height)
-            if 0< height <= MAX_DIMENSION:
+            if 0 < height <= MAX_DIMENSION:
                 break
             else: 
                 print(f"The parcel has been rejected for the height of the parcel should be a non-zero value smaller than or equal to {MAX_DIMENSION}")
@@ -70,18 +69,18 @@ def main():
     breadth = check_volume_breadth()
     height = check_volume_height()
     weight = check_weight()
+
     parcel_volume = (length * breadth * height)
 
     price_per_parcel = ((((weight - 5000) / 100) * .10) + MIN_PRICE)
 
     while True:
-        new_parcel = input("Do you want to add another parcel? (Y for yes and N for)")
+        new_parcel = input("Do you want to add another parcel? (Y for yes and N for no)")
         if new_parcel == "N":
             break
         elif new_parcel == "Y":
-            print("processing...")
-            #to be continued here
-
+            main()
+            #hence the main program will rerun for more parcels
 
     if length + breadth + height <= MAX_SUMOFDIMENSIONS:
         print(f"The parcel of volume {parcel_volume} cm^3 and weight {weight} g has been accepted for delivery. The total cost is ${price_per_parcel}")
@@ -90,6 +89,8 @@ def main():
 
 main()
 
+def checkout():
+    #I now want to calculate how many parcels they have registered and the total cost for the package...
 
 
 
